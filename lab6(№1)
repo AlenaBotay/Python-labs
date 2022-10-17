@@ -1,0 +1,47 @@
+    def __init__(self, name, author, year):
+        self.name = name
+        self.auhor = author
+        self.year = year
+
+
+class Library:
+    def __init__(self, name, biblist):
+        self.name = name
+        self.biblist = biblist
+    def __add__(self, book):
+        self.biblist.append(book)
+        return self
+    def __gt__(self, other):
+        return(self.biblist > other.biblist)
+    def __eq__(self, other):
+        return(self.biblist == other.biblist)
+    def __str__( self ) :
+        return "В библитеке " + str(self.name) + " " + str(len(self.biblist)) + " книг"
+        
+        
+biblio1 = Library(name="Библиотека МФТИ", biblist = [])
+biblio2 = Library(name="Ленинка", biblist = [])
+book = Book(
+    name="Теоретическая физика. Том 1. Механика",
+    author="Ландау Л.Д., Лифшиц Е.М.",
+    year=2004
+)
+
+biblio1 = biblio1 + book
+biblio2 = biblio2 + book
+
+print(biblio1 > biblio2)  
+print(biblio1 == biblio2)
+
+
+print(biblio1 )
+print(biblio2 )
+
+biblio1 += book
+
+print(biblio1 > biblio2) 
+print(biblio1 == biblio2)  
+
+
+print(biblio1)
+print(biblio2)
