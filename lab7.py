@@ -11,13 +11,13 @@ class NA(ABC):
         self.chein_qua = chein_qua
         
         
-        for i in self.chain:                 #Рабтает 
+        for i in self.chain:                
             if i not in self.nucl:
                 print('Exeption')
                 print(self.chain, i, '- there is problem')
                 break
                 
-    def compl(self):                       #работает
+    def compl(self):                   
         compl_chain = ""                   
         for i in self.chain:
             for j in range(4):
@@ -88,7 +88,7 @@ class RNA(NA):
             return(self.chain)
  
         
-    def __add__(self, other):                     #Рабтает
+    def __add__(self, other):                     
             return (self.chain + other.chain)    
         
     def na_i(self,i):
