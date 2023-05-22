@@ -25,9 +25,16 @@ df = pd.DataFrame(arr)
 #print(df)
 print(len(df.values[df.values < -5]))
 
+sum1 = (df[df[df.columns]<-5]).sum()
+sum1 = sum1.sum()
+mean1 =(df[df[df.columns]<-5]).mean()
+mean1 = mean1.mean()
 
-
-
+if (not np.isnan(mean1)):
+    print(int(sum1/mean1))
+else:
+    print(0)
+    
 sum1 = (df[df[df.columns]<0]).sum()
 sum1 = sum1.sum()
 print(-int(sum1))
