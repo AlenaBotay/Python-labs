@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy as np
+s = input()
+s = s.split(" ")
+len1 = int(s[0])
+len2 = int(s[1])
+arr = []
+
+#reading string
+for i in range(len1):
+    s1 = input().split(" ")
+    col = []
+    
+    for j in range(len(s1)):
+        try:
+            int(s1[j])
+        except:
+            continue
+        col.append(int(s1[j]))
+        
+    arr.append(col)
+    
+
+df = pd.DataFrame(arr)
+#print(df)
+print(len(df.values[df.values < -5]))
+
+sum1 = (df[df[df.columns]<-5]).sum()
+sum1 = sum1.sum()
+mean1 =(df[df[df.columns]<-5]).mean()
+mean1 = mean1.mean()
+
+if (not np.isnan(mean1)):
+    print(int(sum1/mean1))
+else:
+    print(0)
+    
+sum1 = (df[df[df.columns]<0]).sum()
+sum1 = sum1.sum()
+print(-int(sum1))
+
+max1 = np.max(np.max(df))
+if (max1 > 0):
+    print(max1)
+else:
+    print(0)

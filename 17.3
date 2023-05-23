@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+games = pd.read_csv(input(), sep=';')
+rates = pd.read_csv(input(), sep=';')
+
+res = rates.groupby("id").mean()
+
+
+res2 = res["mark"].array
+ids = np.arange(1,len(res2) + 1)
+my_array = np.array([ids,res2])
+df = pd.DataFrame(my_array.T, columns = ['id','O_hi_Mark'])
+df = df.sort_values(by = "O_hi_Mark",ascending=False, axis = 0)
+
+print(games["name"][games["id"] == int(df["id"][:1])].iloc[0], format(df["O_hi_Mark"][games["id"] == int(df["id"][:1])].iloc[0], '.3f') )
+print(games["name"][games["id"] == int(df["id"][1:2])].iloc[0], format(df["O_hi_Mark"][games["id"] == int(df["id"][1:2])].iloc[0], '.3f') )
+print(games["name"][games["id"] == int(df["id"][2:3])].iloc[0], format(df["O_hi_Mark"][games["id"] == int(df["id"][2:3])].iloc[0], '.3f') )
+
+
+dev1 = games["company"][games["id"] == int(df["id"][:1])].iloc[0]
+dev2 = games["company"][games["id"] == int(df["id"][1:2])].iloc[0]
+dev3 = games["company"][games["id"] == int(df["id"][2:3])].iloc[0]
+
+x = [dev1,dev2,dev3]
+vals,counts = np.unique(x, return_counts=True)
+index = np.argmax(counts)
+
+print(vals[index], counts.max())
